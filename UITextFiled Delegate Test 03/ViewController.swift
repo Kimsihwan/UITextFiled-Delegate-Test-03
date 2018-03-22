@@ -33,7 +33,8 @@ class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         lbln.resignFirstResponder()
-      // lbln.endEditing(false)
+        //lbln.endEditing(false)
+        //view.endEditing(false)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
