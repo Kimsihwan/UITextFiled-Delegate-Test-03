@@ -8,13 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lblh: UILabel!
     
     @IBOutlet weak var lbln: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // UITextFieldDelegate 객체와 viewCOntroller 객체와 연결
+        lbln.delegate = self
+        
+        
         
         lbln.placeholder = "입력을하세요"
         lbln.clearButtonMode = UITextFieldViewMode.whileEditing
@@ -29,7 +33,7 @@ class ViewController: UIViewController {
     
     }
     
-    // background의 View를 누르면 키패드가 내려감 이걸 왜함 ? ㄴㅇㅎ
+    // background의 View를 누르면 키패드가 내려감
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         lbln.resignFirstResponder()
@@ -40,7 +44,13 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        view.backgroundColor = UIColor.yellow
+        lbln.resignFirstResponder()
+        return true
+    }
+    // UITextFiledDelegate 메소드 호출
 
 }
 
